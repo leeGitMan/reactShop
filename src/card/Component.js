@@ -47,3 +47,4 @@ const ShoesCard = function BodyCompontent(){
 
 
 export {Header, ShoesCard};
+export default Header;

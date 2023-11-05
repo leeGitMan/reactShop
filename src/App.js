@@ -13,14 +13,14 @@ import {Routes, Route, Link, useNavigate, Outlet} from "react-router-dom"
 
 
 function App() {
-  let [shoes] = useState(data);
+  let [item] = useState(data);
   
 
   return (
     <div className="App">
       <Routes> 
 
-        <Route path="/detail/:id" element={<DetailPage shoes={shoes}/>}/>
+        <Route path="/detail/:id" element={<DetailPage item={item}/>}/>
 
         <Route path="/event" element={<EventPage/>}>
           <Route path="one" element={<p>첫 주문시 오리쉑 인형을 선물로!</p>}/>
@@ -35,7 +35,7 @@ function App() {
           </div>}/>
 
         <Route path="*" element={<div>없는 페이지입니다.</div>}/>
-
+        
         <Route path="/about" element={<About/>}>
           <Route path="member" element={<div>어바웃 멤버</div>}/>
           <Route path="location" element={<div>어바웃 로케이션</div>}/>
