@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+
+.mainPic{
+  height: 350px;
+  /* background-image: url(./bgFile/오리쉑.jpeg); */
+  background-size: cover;
+  background-position: center;
+}
