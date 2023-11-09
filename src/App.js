@@ -1,12 +1,13 @@
 /* eslint-disable*/
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import img from './bgFile/오리쉑.jpeg';
 import data from "./data/Data";
 import {Header, ShoesCard} from './card/Component';
 import DetailPage from "./pages/Detail"
 import EventPage from "./pages/Event"
-import {Routes, Route, Link, useNavigate, Outlet} from "react-router-dom"
+import {Routes, Route, Link, useNavigate, Outlet, Navigate} from "react-router-dom"
+import Cart from "./pages/Cart"
 
 
 
@@ -14,6 +15,15 @@ import {Routes, Route, Link, useNavigate, Outlet} from "react-router-dom"
 
 function App() {
   let [item] = useState(data);
+  let navigate = useNavigate();
+  let cursor = {cursor:'pointer'};
+
+
+  useEffect( () =>{
+    if(!localStorage.getItem('watched')){
+      localStorage.setItem('watched', JSON.stringify([]));
+    }
+  },[])
   
 
   return (
@@ -21,10 +31,23 @@ function App() {
       <Routes> 
 
         <Route path="/detail/:id" element={<DetailPage item={item}/>}/>
+        
+        <Route path="/cart" element={<Cart/>}/>
 
         <Route path="/event" element={<EventPage/>}>
-          <Route path="one" element={<p>첫 주문시 오리쉑 인형을 선물로!</p>}/>
-          <Route path="two" element={<p>쿠폰 받아가세요~</p>}/>
+          <Route path="one" element={
+          <div>
+            <p>첫 주문시 오리쉑 인형을 선물로!</p>
+            <p style = {cursor} onClick={() =>{navigate('/event/two')}}>또 다른 이벤트!!! click!</p>
+          </div>}/>
+          <Route path="two" element={
+            <div>
+              <p>쿠폰 받아가세요~</p>
+              <p style= {cursor} onClick={() =>{
+                navigate("/");
+              }}>Home으로 돌아가기</p>
+            </div>
+          }/>
         </Route>
 
         <Route path="/" element={

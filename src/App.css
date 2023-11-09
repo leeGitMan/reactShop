@@ -44,3 +44,31 @@
   background-size: cover;
   background-position: center;
 }
+
+
+.start{
+  opacity: 0;
+}
+
+.after{
+  opacity: 1;
+  transition: opacity .5s;
+}
+
+.navBar{
+  position: relative;
+}
+
+.watchedItemBox{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: -12em;
+  top: 5em;
+}
+
+
+
+
+
+
